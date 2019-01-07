@@ -3,32 +3,37 @@
 <head th:replace="layout :: head"></head>
 <body>
 <h3>Remove Delete</h3>
+<h3>Are you sure</h3>
 <p>
     <a th:href="@{/}">
-        Back to delete list
+        Back to product list
     </a>
 </p>
 <div id="form">
-    <form action="#" th:action="@{/product/delete}" th:object="${product}"
-          method="POST" novalidate="novalidate">
-        <input type="hidden" th:field="*{id}"/>
-        <div>
-            <label>Product</label>
-            <input type="text" th:field="*{nameProduct}"/>
-        </div>
-        <div>
-            <label>Price</label>
-            <input type="number" th:field="*{price}"/>
-        </div>
-        <div>
-            <label>Description</label>
-            <input type="text" th:field="*{description}"/>
-        </div>
-        <div>
-            <label>Producer</label>
-            <input type="text" th:field="*{producer}"/>
-        </div>
-        <input type="submit" value="Remove"></input>
+    <form th:action="@{/delete-product}" th:object="${product}" method="post">
+        <input th:type="hidden" name="id" th:field="*{id}">
+        <table>
+            <tr>
+                <td>Product:</td>
+                <td th:text="${product.nameProduct}"></td>
+            </tr>
+            <tr>
+                <td>Price:</td>
+                <td th:text="${product.price}"></td>
+            </tr>
+            <tr>
+                <td>Description:</td>
+                <td th:text="${product.description}"></td>
+            </tr>
+            <tr>
+                <td>Producer:</td>
+                <td th:text="${product.producer}"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Delete product"></td>
+            </tr>
+        </table>
     </form>
 </div>
 <footer th:replace="layout :: footer"></footer>

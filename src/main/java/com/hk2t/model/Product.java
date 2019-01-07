@@ -1,7 +1,14 @@
 package com.hk2t.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "products")
 public class Product {
-    private int id;
+
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private Long id;
     private String nameProduct;
     private int price;
     private String description;
@@ -10,7 +17,7 @@ public class Product {
     public Product() {
     }
 
-    public Product(int id, String nameProduct, int price, String description, String producer) {
+    public Product(Long id, String nameProduct, int price, String description, String producer) {
         this.id = id;
         this.nameProduct = nameProduct;
         this.price = price;
@@ -18,11 +25,11 @@ public class Product {
         this.producer = producer;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -56,5 +63,10 @@ public class Product {
 
     public void setProducer(String producer) {
         this.producer = producer;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Product[id=%d, nameProduct='%s', producer='%s']", id, nameProduct, producer);
     }
 }

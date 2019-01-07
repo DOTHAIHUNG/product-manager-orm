@@ -9,9 +9,7 @@ public interface ProductService {
 
     void save(Product product);
 
-    void update(int id, Product product);
+    void remove(Long id);
 
-    void remove(int id);
-
-    Product findById(int id);
+    Product findById(Long id);
 }

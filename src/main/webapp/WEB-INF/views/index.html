@@ -4,7 +4,7 @@
 <body>
 <h3>Products</h3>
 <p>
-    <a th:href="@{/product/create}">
+    <a th:href="@{/create-product}">
         Add new product
     </a>
 </p>
@@ -26,14 +26,14 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="row,rowStat : ${products}">
-        <td th:text="${row.getNameProduct()}"></td>
-        <td th:text="${row.getPrice()}"></td>
-        <td th:text="${row.getDescription()}"></td>
-        <td th:text="${row.getProducer()}"></td>
-        <td><a th:href="@{/customer/{id}/edit(id=${row.getId()})}">edit</a></td>
-        <td><a th:href="@{/customer/{id}/delete(id=${row.getId()})}">delete</a></td>
-        <td><a th:href="@{/customer/{id}/view(id=${row.getId()})}">view</a></td>
+    <tr th:each="product : ${products}">
+        <td th:text="${product.nameProduct}"></td>
+        <td th:text="${product.price}"></td>
+        <td th:text="${product.description}"></td>
+        <td th:text="${product.producer}"></td>
+        <td><a th:href="@{/edit-product/__${product.id}__}">Edit</a></td>
+        <td><a th:href="@{/delete-product/__${product.id}__}">Delete</a></td>
+        <td><a th:href="@{/view-product/__${product.id}__}">View</a></td>
     </tr>
     </tbody>
 </table>
